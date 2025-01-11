@@ -10,8 +10,14 @@ import os
 from PyPDF2 import PdfReader
 import io
 
-# Load SpaCy model for text processing
-nlp = spacy.load("en_core_web_sm")
+# Try to load the model
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    # If the model is not found, download it
+    from spacy.cli import download
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 # Initialize LanguageTool for grammar checking
 tool = language_tool_python.LanguageTool('en-US')
