@@ -3,3 +3,4 @@ PyPDF2
 streamlit 
 language-tool-python 
 pdfplumber
+spacy
